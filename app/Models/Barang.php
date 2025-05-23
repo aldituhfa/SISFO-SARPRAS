@@ -11,7 +11,12 @@ class Barang extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_barang', 'nama_barang', 'kategori_id', 'stok', 'satuan', 'lokasi'
+        'nama_barang',
+        'kategori_id',
+        'stok',
+        'satuan',
+        'lokasi',
+        'gambar',
     ];
 
     public function kategori()
