@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengembalians', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_peminjam');
-            $table->string('nama_barang');
+        Schema::create('pengembalian', function (Blueprint $table) {
+            $table->id(); // NO (auto increment)
+            $table->string('peminjam'); // nama peminjam
+            $table->string('barang'); // nama barang
             $table->integer('jumlah');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->string('kondisi_barang');
-            $table->enum('aksi', ['Dikembalikan', 'Terlambat'])->nullable();
-            $table->enum('status', ['Pending', 'Dikembalikan', 'Terlambat'])->default('Pending');
+            $table->string('gambar'); // path gambar
+            $table->enum('aksi', ['diterima', 'terlambat', 'hilang'])->nullable();
+            $table->string('status')->nullable(); // otomatis disesuaikan dari aksi
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengembalians');
+        Schema::dropIfExists('pengembalian');
     }
 };

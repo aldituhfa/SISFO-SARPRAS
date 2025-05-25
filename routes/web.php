@@ -59,7 +59,15 @@ Route::middleware('auth')->group(function () {
     // Route::get('/pengembalians', [PengembalianController::class, 'index']);
     // Route::post('/pengembalians', [PengembalianController::class, 'store']);
     // Route::get('/pengembalians', [PengembalianController::class, 'view'])->name('pengembalians.view');
+
+    // Tampilkan semua data pengembalian (admin)
     Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian.index');
+    // Tampilkan detail pengembalian (jika diperlukan)
+    Route::get('/pengembalian/{id}', [PengembalianController::class, 'show'])->name('pengembalian.show');
+    // Update aksi (diterima, terlambat, hilang) oleh admin
+    Route::put('/pengembalian/{id}', [PengembalianController::class, 'update'])->name('pengembalian.update');
+
+
     Route::get('/laporan-pengembalian', [LaporanPengembalianController::class, 'index'])->name('laporan.pengembalian');
     Route::get('/laporan-pengembalian/excel', [LaporanPengembalianController::class, 'exportExcel'])->name('laporan.pengembalian.excel');
     Route::get('/laporan-pengembalian/pdf', [LaporanPengembalianController::class, 'exportPDF'])->name('laporan.pengembalian.pdf');

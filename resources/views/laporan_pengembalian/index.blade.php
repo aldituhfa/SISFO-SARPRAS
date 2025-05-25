@@ -28,8 +28,8 @@
                 @forelse ($laporan as $index => $data)
                 <tr class="hover:bg-gray-50">
                     <td class="px-4 py-2 border-b">{{ $index + 1 }}</td>
-                    <td class="px-4 py-2 border-b">{{ $data->nama_peminjam }}</td>
-                    <td class="px-4 py-2 border-b">{{ $data->nama_barang }}</td>
+                    <td class="px-4 py-2 border-b">{{ $data->peminjam }}</td>
+                    <td class="px-4 py-2 border-b">{{ $data->barang }}</td>
                     <td class="px-4 py-2 border-b">{{ $data->jumlah }}</td>
                     <td class="px-4 py-2 border-b">{{ \Carbon\Carbon::parse($data->tanggal_pinjam)->format('d-m-Y') }}</td>
                     <td class="px-4 py-2 border-b">{{ \Carbon\Carbon::parse($data->tanggal_kembali)->format('d-m-Y') }}</td>

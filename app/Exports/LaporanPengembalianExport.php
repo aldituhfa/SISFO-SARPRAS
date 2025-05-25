@@ -14,8 +14,8 @@ class LaporanPengembalianExport implements FromCollection, WithHeadings
     public function collection()
     {
         return Pengembalian::select(
-            'nama_peminjam',
-            'nama_barang',
+            'peminjam',
+            'barang',
             'jumlah',
             'tanggal_pinjam',
             'tanggal_kembali',

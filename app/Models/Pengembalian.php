@@ -8,20 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Pengembalian extends Model
 {
     use HasFactory;
-    protected $table = 'pengembalians';
+    protected $table = 'pengembalian';
+
     protected $fillable = [
-        'nama_peminjam', 'nama_barang', 'jumlah',
-        'tanggal_pinjam', 'tanggal_kembali', 'kondisi_barang',
-        'aksi', 'status'
+        'peminjam',
+        'barang',
+        'jumlah',
+        'tanggal_pinjam',
+        'tanggal_kembali',
+        'kondisi_barang',
+        'gambar',
+        'aksi',
+        'status',
     ];
-
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
-
-    public function barang()
-    {
-        return $this->belongsTo(Barang::class);
-    }
 }

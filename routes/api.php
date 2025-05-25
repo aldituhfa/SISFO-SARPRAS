@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\PengembalianApiController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,6 @@ Route::get('/status-peminjaman', [PeminjamanController::class, 'cekStatus']);
 Route::get('/peminjaman', [PeminjamanController::class, 'apiPeminjaman']);
 
 
+Route::get('/pengembalian', [PengembalianController::class, 'index']);
 Route::post('/pengembalian', [PengembalianController::class, 'store']);
+Route::post('/pengembalian', [PengembalianApiController::class, 'store']);
