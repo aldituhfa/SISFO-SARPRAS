@@ -233,6 +233,7 @@
     <!-- Main Content -->
     <main class="flex-1 bg-gray-100 p-6 ml-64">
         @yield('content')
+        @stack('scripts')
     </main>
 </body>
 
