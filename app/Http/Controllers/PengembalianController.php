@@ -68,4 +68,23 @@ class PengembalianController extends Controller
 
         return response()->json(['message' => 'Pengembalian berhasil ditambahkan'], 201);
     }
+
+    public function getHistory(Request $request)
+    {
+        $email = $request->query('email');
+
+        // Ambil data pengembalian berdasarkan email peminjam
+        $data = Pengembalian::where('peminjam', $email)->get()->map(function ($item) {
+            return [
+                'barang' => $item->barang,
+                'jumlah' => $item->jumlah,
+                'tanggal_pinjam' => $item->tanggal_pinjam,
+                'tanggal_kembali' => $item->tanggal_kembali,
+                'kondisi_barang' => $item->kondisi_barang,
+                'gambar_url' => $item->gambar ? asset('storage/' . $item->gambar) : null,
+            ];
+        });
+
+        return response()->json($data);
+    }
 }

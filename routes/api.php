@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\LaporanPengembalianController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\PenggunaController;
@@ -35,8 +36,10 @@ Route::get('/barang/terbaru', [BarangController::class, 'terbaru']);
 Route::post('/peminjaman', [PeminjamanController::class, 'store']);
 Route::get('/status-peminjaman', [PeminjamanController::class, 'cekStatus']);
 Route::get('/peminjaman', [PeminjamanController::class, 'apiPeminjaman']);
+Route::get('/peminjaman_terakhir', [PeminjamanController::class, 'peminjamanTerakhir']);
 
 
 Route::get('/pengembalian', [PengembalianController::class, 'index']);
 Route::post('/pengembalian', [PengembalianController::class, 'store']);
 Route::post('/pengembalian', [PengembalianApiController::class, 'store']);
+Route::get('/history_pengembalian', [PengembalianController::class, 'getHistory']);

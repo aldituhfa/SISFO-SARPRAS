@@ -109,4 +109,21 @@ class PeminjamanController extends Controller
 
         return response()->json($formatted);
     }
+
+    public function peminjamanTerakhir(Request $request)
+    {
+        $email = $request->query('email');
+
+        $peminjaman = Peminjaman::where('nama_peminjam', $email)->latest()->first();
+
+        if ($peminjaman) {
+            return response()->json([
+                'barang' => $peminjaman->barang,
+                'jumlah' => $peminjaman->jumlah,
+                'status' => $peminjaman->status,
+            ]);
+        } else {
+            return response()->json(['message' => 'Tidak ada peminjaman ditemukan'], 404);
+        }
+    }
 }
