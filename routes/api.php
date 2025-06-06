@@ -37,6 +37,11 @@ Route::post('/peminjaman', [PeminjamanController::class, 'store']);
 Route::get('/status-peminjaman', [PeminjamanController::class, 'cekStatus']);
 Route::get('/peminjaman', [PeminjamanController::class, 'apiPeminjaman']);
 Route::get('/peminjaman_terakhir', [PeminjamanController::class, 'peminjamanTerakhir']);
+Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy']);
+
+// Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy']);
+// Route::post('/peminjaman/{id}/kembalikan', [PeminjamanController::class, 'kembalikan']);
+// Route::post('/peminjaman/kembalikan/{id}', [PeminjamanController::class, 'kembalikan']);
 
 
 Route::get('/pengembalian', [PengembalianController::class, 'index']);

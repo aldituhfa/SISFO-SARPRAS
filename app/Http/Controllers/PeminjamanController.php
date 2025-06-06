@@ -96,7 +96,7 @@ class PeminjamanController extends Controller
 
     public function apiPeminjaman()
     {
-        $data = Peminjaman::where('status', 'dipinjam')->get();
+        $data = Peminjaman::where('status', 'dipinjam', 'Dikembalikan')->get();
 
         $formatted = $data->map(function ($item) {
             return [
@@ -118,12 +118,33 @@ class PeminjamanController extends Controller
 
         if ($peminjaman) {
             return response()->json([
+                'id' => $peminjaman->id,  // tambah ini
                 'barang' => $peminjaman->barang,
                 'jumlah' => $peminjaman->jumlah,
                 'status' => $peminjaman->status,
+                'tanggal_pinjam' => $peminjaman->tanggal_pinjam,
             ]);
         } else {
             return response()->json(['message' => 'Tidak ada peminjaman ditemukan'], 404);
         }
+    }
+
+    // public function kembalikan(Request $request, $id)
+    // {
+    //     $peminjaman = Peminjaman::findOrFail($id);
+    //     $peminjaman->status = 'Dikembalikan';
+    //     $peminjaman->save();
+
+    //     return response()->json(['message' => 'Barang sudah dikembalikan'], 200);
+    // }
+
+    public function destroy($id)
+    {
+        $peminjaman = Peminjaman::find($id);
+        if (!$peminjaman) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+        $peminjaman->delete();
+        return response()->json(['message' => 'Data peminjaman berhasil dihapus'], 200);
     }
 }
