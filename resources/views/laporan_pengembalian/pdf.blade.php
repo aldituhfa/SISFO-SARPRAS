@@ -34,8 +34,8 @@
             @foreach($laporan as $i => $data)
             <tr>
                 <td>{{ $i + 1 }}</td>
-                <td>{{ $data->nama_peminjam }}</td>
-                <td>{{ $data->nama_barang }}</td>
+                <td>{{ $data->peminjam }}</td>
+                <td>{{ $data->barang }}</td>
                 <td>{{ $data->jumlah }}</td>
                 <td>{{ $data->tanggal_pinjam }}</td>
                 <td>{{ $data->tanggal_kembali }}</td>
